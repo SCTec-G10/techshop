@@ -167,6 +167,21 @@ def test_calculate_total_with_discount_exact_1000() -> None:
     assert total_with_discount == 900.0
 
 
+def test_remove_item_from_empty_cart() -> None:
+    """
+    Testa a remoção de um item em um carrinho vazio.
+    Caso de borda: Carrinho vazio não deve quebrar ao tentar remover um item.
+    """
+    # Arrange
+    cart = ShoppingCart()
+
+    # Act
+    cart.remove_item(1)
+
+    # Assert
+    assert len(cart.items) == 0
+
+
 def test_remove_non_existent_item() -> None:
     """
     Testa a remoção de um item informando um ID que não existe no carrinho.
